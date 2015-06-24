@@ -13,6 +13,7 @@ var app = app || {};
 		// and ensure that each todo created has `title` and `completed` keys.
 		defaults: {
 			title: '',
+			priority: false,
 			completed: false
 		},
 
@@ -22,19 +23,14 @@ var app = app || {};
 				title: this.get('title'),
 				completed: !this.get('completed')
 			});
+		},
 
-/*		//not the best way to do this... should be done in the template... but works
-			var strDone = ' -- done',
-					strTitle = this.get('title'),
-					bCompleted = !this.get('completed');
-
-			strTitle = bCompleted ? strTitle + strDone : strTitle.slice(0, strTitle.indexOf(strDone));
-
+		// Toggle the 'priority' state of the todo item
+		togglePriority: function () {
+			console.log('model.togglePriority:',this.get('priority'))
 			this.save({
-				title: strTitle, //this.get('title')),
-				completed: bCompleted //!this.get('completed')
+				priority: !this.get('priority')
 			});
-*/
 		}
 	});
 })();
